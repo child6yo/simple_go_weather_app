@@ -5,11 +5,6 @@ import (
 	"net/http"
 )
 
-
-type Requests interface {
-	Parcedata() []byte
-}
-
 type Request struct {
 	Url string
 }
