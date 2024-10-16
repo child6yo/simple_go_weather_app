@@ -9,7 +9,7 @@ type Request struct {
 	Url string
 }
 
-func (r *Request)GetResponce() ([]byte, error) {
+func (r *Request)GetResponse() ([]byte, error) {
 	res, err := http.Get(r.Url)
 	if err != nil {
 		return []byte{}, RequestError

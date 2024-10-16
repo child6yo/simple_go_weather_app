@@ -14,7 +14,7 @@ const InputError Error = "error: incorrect input"
 const SymbolsError Error = "error: incorrect symbols in input (only latin are accepted)"
 const RequestError Error = "error: cannot get responce"
 const ReadError Error = "error: cannot read data"
-const ParceError Error = "error: cannot parce data"
+const ParseError Error = "error: cannot parce data"
 
 const WeatherAPIUrl = "https://api.open-meteo.com/v1/forecast?latitude=%g&longitude=%g&current=temperature_2m"
 const CoordinatesAPIUrl = "https://geocoding-api.open-meteo.com/v1/search?name=%s&count=1&language=ru&format=json"
@@ -38,16 +38,16 @@ func InputCheck(city string) error {
 }
 
 func CityHandler(city string) error {
-	var weatherdata WeatherAPIResponce
-	var coordinatesdata CoordinatesAPIResponce
+	var weatherdata WeatherAPIResponse
+	var coordinatesdata CoordinatesAPIResponse
 
 	fcoordinatesurl := fmt.Sprintf(CoordinatesAPIUrl, city)
 	coordparcer := Request{fcoordinatesurl}
-	rawcdata, err := coordparcer.GetResponce()
+	rawcdata, err := coordparcer.GetResponse()
 	if err != nil {
 		return err
 	}
-	err = ParceAnyResponce(&coordinatesdata, rawcdata)
+	err = ParceAnyResponse(&coordinatesdata, rawcdata)
 	if err != nil {
 		return err
 	}
@@ -55,11 +55,11 @@ func CityHandler(city string) error {
 
 	fweatherurl := fmt.Sprintf(WeatherAPIUrl, cdata.Latitude, cdata.Longitude)
 	weatherparcer := Request{fweatherurl}
-	rawwdata, err := weatherparcer.GetResponce()
+	rawwdata, err := weatherparcer.GetResponse()
 	if err != nil {
 		return err
 	}
-	err = ParceAnyResponce(&weatherdata, rawwdata)
+	err = ParceAnyResponse(&weatherdata, rawwdata)
 	if err != nil {
 		return err
 	}

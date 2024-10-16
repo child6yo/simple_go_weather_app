@@ -16,7 +16,7 @@ func TestCityHandler(t *testing.T) {
 		{
 			name: "Empty",
 			value: "",
-			err: ParceError,
+			err: ParseError,
 		},
 	}
 	for _, tc := range cases  {

@@ -6,7 +6,7 @@ import (
 
 const minwantedbytes = 15
 
-func TestGetResponce(t *testing.T) {
+func TestGetResponse(t *testing.T) {
 	cases := []struct {
 		name string
 		value Request
@@ -32,7 +32,7 @@ func TestGetResponce(t *testing.T) {
 	}
 	for _, tc := range cases  {
 		t.Run(tc.name, func(t *testing.T) {
-			got, err := tc.value.GetResponce()
+			got, err := tc.value.GetResponse()
 			if len(got) < tc.want || err != tc.err {
 				t.Errorf("%q failed", tc.name)
 			}

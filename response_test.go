@@ -2,23 +2,23 @@ package main
 
 import "testing"
 
-func TestParceAnyResponce(t *testing.T) {
+func TestParceAnyResponse(t *testing.T) {
 	cases := []struct {
 		name string
-		inter Responces
+		inter Responses
 		value []byte
 		err error
 	}{
 		{
 			name: "empty",
-			inter: &CoordinatesAPIResponce{},
+			inter: &CoordinatesAPIResponse{},
 			value: []byte{},
-			err: ParceError,
+			err: ParseError,
 		},
 	}
 	for _, tc := range cases  {
 		t.Run(tc.name, func(t *testing.T) {
-			err := ParceAnyResponce(tc.inter, tc.value)
+			err := ParceAnyResponse(tc.inter, tc.value)
 			if err != tc.err {
 				t.Errorf("%q failed", tc.name)
 			}
