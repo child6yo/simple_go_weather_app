@@ -10,14 +10,19 @@ type Error string
 
 func (e Error) Error() string { return string(e) }
 
-const InputError Error = "error: incorrect input"
-const SymbolsError Error = "error: incorrect symbols in input (only latin are accepted)"
-const RequestError Error = "error: cannot get responce"
-const ReadError Error = "error: cannot read data"
-const ParseError Error = "error: cannot parce data"
 
-const WeatherAPIUrl = "https://api.open-meteo.com/v1/forecast?latitude=%g&longitude=%g&current=temperature_2m"
-const CoordinatesAPIUrl = "https://geocoding-api.open-meteo.com/v1/search?name=%s&count=1&language=ru&format=json"
+
+const (
+	InputError Error = "error: incorrect input"
+	SymbolsError Error = "error: incorrect symbols in input (only latin are accepted)"
+	RequestError Error = "error: cannot get responce"
+	ReadError Error = "error: cannot read data"
+	ParseError Error = "error: cannot parce data"
+	
+	WeatherAPIUrl = "https://api.open-meteo.com/v1/forecast?latitude=%g&longitude=%g&current=temperature_2m"
+	CoordinatesAPIUrl = "https://geocoding-api.open-meteo.com/v1/search?name=%s&count=1&language=ru&format=json"
+)
+
 
 func CityInput() (string, error) {
 	var city string
